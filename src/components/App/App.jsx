@@ -30,14 +30,12 @@ export class App extends React.Component {
   render() {
     const totalFeedback = this.countTotalFeedback();
     const positivePercentage = this.countPositiveFeedbackPercentage();
+    const  options = ['good', 'neutral', 'bad'];
 
     return (
       <div className={Appcss.container}>
         <Section title=" Please leave feedback">
-          <FeedbackOptions
-            options={{ good: this.state.good, neutral: this.state.neutral, bad: this.state.bad }}
-            onLeaveFeedback={this.handleFeedback}
-          />
+          <FeedbackOptions options={options} onLeaveFeedback={this.handleFeedback}/>
         </Section>
 
         <Section title="Statistics">

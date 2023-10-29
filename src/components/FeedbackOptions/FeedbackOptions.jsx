@@ -5,21 +5,21 @@ import styles from '../FeedbackOptions/feedback-options.module.css'
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <div className={styles['feedback-options']}>
-      <button className={styles['feedback-button']} onClick={() => onLeaveFeedback('good')}>
-        Good
-      </button>
-      <button className={styles['feedback-button']} onClick={() => onLeaveFeedback('neutral')}>
-        Neutral
-      </button>
-      <button className={styles['feedback-button']} onClick={() => onLeaveFeedback('bad')}>
-        Bad
-      </button>
+      {options.map((option) => (
+        <button
+          key={option}
+          className={styles['feedback-button']}
+          onClick={() => onLeaveFeedback(option)}
+        >
+          {option}
+        </button>
+      ))}
     </div>
   );
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.object.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
 
